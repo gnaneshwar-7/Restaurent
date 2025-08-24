@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Spice & Sizzle – Modern Indian Kitchen</title>
+  <meta name="description" content="Spice & Sizzle – seasonal Indian plates, crafted cocktails, and warm ambiance. View menu highlights, hours, location, and contact details." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0b0b;
+      --card: #131315;
+      --muted: #9aa0a6;
+      --text: #f1f3f4;
+      --brand: #f59e0b;
+      --brand-2: #ef4444;
+      --accent: #22c55e;
+    }
+    * { box-sizing: border-box }
+    html, body { margin:0; height:100%; }
+    body { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    a { color: var(--brand); }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 1rem; }
+
+    /* Skip link */
+    .skip-link { position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+    .skip-link:focus { position: static; width: auto; height: auto; padding: .75rem 1rem; background: #111827; color: #fff; border-radius: .5rem; }
+
+    header { position: sticky; top:0; backdrop-filter: blur(8px); background: rgba(11,11,11,.6); border-bottom: 1px solid #1f2937; z-index: 100; }
+    .nav { display:flex; align-items:center; justify-content:space-between; padding: .8rem 0; }
+    .brand { display:flex; align-items:center; gap:.75rem; text-decoration:none; color: var(--text); }
+    .brand-logo { inline-size: 40px; block-size: 40px; border-radius: 10px; background: linear-gradient(135deg, var(--brand), var(--brand-2)); display:grid; place-items:center; box-shadow: 0 10px 30px rgba(245,158,11,.25); }
+    .brand-logo svg { width:24px; height:24px; }
+    .brand h1 { font-size: 1.1rem; margin:0; font-weight:800; letter-spacing:.3px; }
+
+    .hero { position: relative; isolation:isolate; }
+    .hero::before { content:""; position:absolute; inset:0; background: radial-gradient(1200px 400px at 20% 0%, rgba(239,68,68,.15), transparent), radial-gradient(1200px 400px at 80% 10%, rgba(34,197,94,.1), transparent); z-index:-1; }
+    .hero-inner { display:grid; grid-template-columns: 1.1fr .9fr; gap: 2rem; padding: 3rem 0 2rem; }
+    .hero-card { background: linear-gradient(180deg, rgba(19,19,21,.9), rgba(19,19,21,.7)); border:1px solid #262626; border-radius: 1.5rem; padding: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,.4); }
+    .hero h2 { margin:0 0 .5rem; font-size: clamp(1.8rem, 2.8vw + 1rem, 3rem); line-height:1.2; }
+    .badge { display:inline-flex; align-items:center; gap:.5rem; font-size:.85rem; background:#111827; border:1px solid #1f2937; padding:.4rem .7rem; border-radius:999px; color:#e5e7eb; }
+
+    .media-card { border-radius: 1.5rem; overflow:hidden; border:1px solid #262626; background:#0f1115; }
+    .media { aspect-ratio: 16/10; width:100%; object-fit: cover; display:block; filter: saturate(1.05) contrast(1.05) brightness(.95); }
+    .caption { font-size:.9rem; color:var(--muted); padding:.6rem .9rem; border-top: 1px solid #262626; }
+
+    section { padding: 2.2rem 0; }
+    h3.section-title { font-size: 1.5rem; margin: 0 0 1rem; }
+
+    .grid { display:grid; gap:1rem; }
+    .cards-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .card { background: var(--card); border:1px solid #262626; border-radius: 1rem; padding: 1.2rem; }
+    .card h4 { margin:.2rem 0 .4rem; font-size:1.1rem; }
+    .muted { color: var(--muted); }
+
+    .info { display:grid; grid-template-columns: repeat(3, 1fr); gap:1rem; }
+
+    .menu-list { list-style: none; padding:0; margin:0; display:grid; gap:.8rem; }
+    .menu-item { display:flex; align-items:flex-start; justify-content:space-between; gap:1rem; border-bottom: 1px dashed #333; padding-bottom:.6rem; }
+    .price { font-weight: 600; color: var(--brand); white-space:nowrap; margin-left: 1rem; }
+
+    .cta { display:flex; gap:.6rem; flex-wrap:wrap; margin-top:1rem; }
+    .btn { display:inline-block; text-decoration:none; background:linear-gradient(180deg, #f59e0b, #d97706); color:#0b0b0b; font-weight:800; padding:.7rem 1rem; border-radius:.8rem; }
+    .btn.secondary { background:#111827; color:#e5e7eb; border:1px solid #374151; }
+
+    footer { border-top:1px solid #1f2937; padding:1.6rem 0 3rem; }
+
+    @media (max-width: 900px){
+      .hero-inner { grid-template-columns: 1fr; }
+      .info { grid-template-columns: 1fr; }
+      .cards-3 { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header>
+    <div class="container nav" role="navigation" aria-label="Primary">
+      <a class="brand" href="#" aria-label="Spice and Sizzle home">
+        <span class="brand-logo" aria-hidden="true">
+          <!-- Simple flame icon -->
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 2s1.5 3 .5 5-3.5 3-3.5 6c0 2.761 2.239 5 5 5s5-2.239 5-5c0-3-2-4-2-6 0-2 1-3 1-3s-5 1-6 6" stroke="#0b0b0b" stroke-width="2"/>
+          </svg>
+        </span>
+        <h1>Spice & Sizzle</h1>
+      </a>
+      <div aria-hidden="true" class="muted">Modern Indian Kitchen</div>
+    </div>
+  </header>
+
+  <main id="main" class="container" tabindex="-1">
+    <section class="hero" aria-labelledby="welcome-heading">
+      <div class="hero-inner">
+        <div class="hero-card" role="region" aria-label="Welcome">
+          <span class="badge" aria-label="Open today">🔥 Open today · Dine-in · Takeaway</span>
+          <h2 id="welcome-heading">Seasonal plates, bold flavors, warm vibes.</h2>
+          <p class="muted">From street-food classics to chef-driven specials, our menu celebrates the diversity of Indian cuisine with a modern twist. Fully accessible site with keyboard-friendly navigation and high contrast design.</p>
+          <div class="cta">
+            <a class="btn" href="#menu">View Menu Highlights</a>
+            <a class="btn secondary" href="#hours">Hours & Location</a>
+          </div>
+        </div>
+        <figure class="media-card">
+          <img class="media" src="https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=1600&auto=format&fit=crop" alt="Close-up of sizzling tandoori skewers on a grill" />
+          <figcaption class="caption">Fresh, vibrant, and cooked over flame.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="menu" aria-labelledby="menu-title">
+      <h3 class="section-title" id="menu-title">Menu Highlights</h3>
+      <div class="grid cards-3" role="list">
+        <div class="card" role="listitem">
+          <h4>Tandoori Paneer Tacos <span class="price" aria-label="price">₹320</span></h4>
+          <p class="muted">Charred paneer, pickled onions, coriander chutney, soft tortillas.</p>
+        </div>
+        <div class="card" role="listitem">
+          <h4>Butter Chicken <span class="price" aria-label="price">₹440</span></h4>
+          <p class="muted">Creamy tomato gravy, fenugreek, finished with butter. Served with naan.</p>
+        </div>
+        <div class="card" role="listitem">
+          <h4>Veg Biryani <span class="price" aria-label="price">₹380</span></h4>
+          <p class="muted">Fragrant basmati, saffron, seasonal veggies, raita on the side.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="hours" aria-labelledby="hours-title">
+      <h3 class="section-title" id="hours-title">Hours, Location & Contact</h3>
+      <div class="info" role="list">
+        <div class="card" role="listitem" aria-label="Hours of operation">
+          <h4>Hours</h4>
+          <p class="muted">Mon–Thu: 12:00–22:00<br>Fri–Sun: 12:00–23:00</p>
+        </div>
+        <div class="card" role="listitem" aria-label="Location">
+          <h4>Location</h4>
+          <p class="muted">123 Food Street, Hyderabad, Telangana 500001</p>
+          <p><a href="https://maps.google.com/?q=123+Food+Street+Hyderabad" rel="noopener" target="_blank">Open in Maps</a></p>
+        </div>
+        <div class="card" role="listitem" aria-label="Contact details">
+          <h4>Contact</h4>
+          <p class="muted">📞 <a href="tel:+919999888877">+91 99998 88877</a><br>✉️ <a href="mailto:hello@spiceandsizzle.example">hello@spiceandsizzle.example</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="access-title">
+      <h3 class="section-title" id="access-title">Accessibility Features</h3>
+      <ul class="menu-list">
+        <li>Semantic landmarks (header, main, section, footer), descriptive alt text.</li>
+        <li>Keyboard-friendly: visible skip link, logical heading order.</li>
+        <li>High contrast colors and large touch targets for buttons and links.</li>
+        <li>Responsive layout for mobile and desktop.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <small class="muted">© <span id="year"></span> Spice & Sizzle. All rights reserved.</small>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
